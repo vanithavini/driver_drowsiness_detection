@@ -59,4 +59,20 @@ for cls in CLASSES:
 print("Average Height:", np.mean(heights))
 print("Average Width:", np.mean(widths))
 
+# ====== 4️⃣ Pixel Intensity Distribution ======
+pixel_values = []
+
+for cls in CLASSES:
+    class_path = os.path.join(DATA_DIR, cls)
+    for img_name in os.listdir(class_path)[:30]:
+        img_path = os.path.join(class_path, img_name)
+        img = cv2.imread(img_path, 0)  # grayscale
+        pixel_values.extend(img.flatten())
+
+plt.figure()
+plt.hist(pixel_values, bins=50)
+plt.title("Pixel Intensity Distribution")
+plt.xlabel("Pixel Value")
+plt.ylabel("Frequency")
+plt.show()
 
