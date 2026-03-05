@@ -17,7 +17,7 @@ early_stop = tf.keras.callbacks.EarlyStopping(
 )
 
 checkpoint = tf.keras.callbacks.ModelCheckpoint(
-    "mobilenet_best.h5",
+    "models/mobilenet_best.h5",
     monitor='val_accuracy',
     save_best_only=True
 )
@@ -29,5 +29,5 @@ history = model.fit(
     callbacks=[early_stop, checkpoint]
 )
 
-model.save("mobilenet_final.h5")
+model.save("models/mobilenet_final.h5")
 
