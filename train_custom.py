@@ -2,7 +2,7 @@ import tensorflow as tf
 from preprocessing import train_generator, val_generator
 from custom_cnn_model import build_model
 
-# Build model
+# ====== Build model ======
 model = build_model()
 
 model.compile(
@@ -11,7 +11,7 @@ model.compile(
     metrics=['accuracy']
 )
 
-# Callbacks
+# ====== Callbacks ======
 early_stop = tf.keras.callbacks.EarlyStopping(
     monitor='val_loss',
     patience=3,
@@ -19,12 +19,12 @@ early_stop = tf.keras.callbacks.EarlyStopping(
 )
 
 checkpoint = tf.keras.callbacks.ModelCheckpoint(
-    "custom_best.h5",
+    "models/custom_best.h5",
     monitor='val_accuracy',
     save_best_only=True
 )
 
-# Train
+# ====== Train ======
 history = model.fit(
     train_generator,
     validation_data=val_generator,
@@ -32,6 +32,6 @@ history = model.fit(
     callbacks=[early_stop, checkpoint]
 )
 
-# Save final model
-model.save("custom_final.h5")
+# ====== Save final model ======
+model.save("models/custom_final.h5")
 
