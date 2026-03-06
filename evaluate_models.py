@@ -70,6 +70,7 @@ plt.bar(results_df["Model"], results_df["Accuracy"])
 plt.title("Model Accuracy Comparison")
 plt.ylabel("Accuracy")
 plt.xlabel("Models")
+plt.savefig("outputs/accuracy_comparison.png")
 plt.show()
 
 # ====== Loss Comparison Graph ======
@@ -78,6 +79,7 @@ plt.bar(results_df["Model"], results_df["Loss"])
 plt.title("Model Loss Comparison")
 plt.ylabel("Loss")
 plt.xlabel("Models")
+plt.savefig("outputs/loss_comparison.png")
 plt.show()
 
 # ====== Select Best Model ======
@@ -106,6 +108,7 @@ sns.heatmap(cm, annot=True, fmt="d",
 plt.title(f"Confusion Matrix ({best_model_name})")
 plt.xlabel("Predicted")
 plt.ylabel("Actual")
+plt.savefig("outputs/confusion_matrix.png")
 plt.show()
 
 # ====== Classification Report ======
